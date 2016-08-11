@@ -247,7 +247,20 @@ static void main_window_load() {
 
 static void main_window_unload() {
   layer_destroy(main_clock);
+  layer_destroy(clock_hands);
   gbitmap_destroy(H0);
+  gbitmap_destroy(H1);
+  gbitmap_destroy(H2);
+  gbitmap_destroy(H3);
+  gbitmap_destroy(H4);
+  gbitmap_destroy(H5);
+  gbitmap_destroy(H6);
+  gbitmap_destroy(H7);
+  gbitmap_destroy(H8);
+  gbitmap_destroy(H9);
+  gbitmap_destroy(H10);
+  gbitmap_destroy(H11);
+  gpath_destroy(hour_arrow);
 }
 
 static void app_connection_handler(bool connected) {
