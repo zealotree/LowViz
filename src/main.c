@@ -23,8 +23,8 @@ static const GPathInfo HOUR_HAND_POINTS = {
 
 // Layout boundaries
 #define TIME_RING PBL_IF_ROUND_ELSE(23, 20)
-#define DOT_RING PBL_IF_ROUND_ELSE(46, 20)
-#define DATE_RING PBL_IF_ROUND_ELSE(68, 20)
+#define DOT_RING PBL_IF_ROUND_ELSE(52, 20)
+#define DATE_RING PBL_IF_ROUND_ELSE(75, 20)
 
 
 // Bitmaps for Hours
@@ -112,7 +112,7 @@ GRect inner_minute_frame = grect_inset(bounds, GEdgeInsets((4 * 1) + 2));
     
         graphics_context_set_fill_color(ctx, GColorBlack);
     GPoint tick = gpoint_from_polar(dot_ring, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(get_angle_for_hour(i)));
-    graphics_fill_circle(ctx, tick, 1);
+    graphics_fill_circle(ctx, tick, 2);
     
     graphics_context_set_stroke_color(ctx, GColorBlack);
     graphics_context_set_stroke_width(ctx, 1);
@@ -180,10 +180,10 @@ static void draw_clock_hands(Layer *layer, GContext *ctx) {
     };
 
 
-    graphics_context_set_stroke_width(ctx, 1);
+    graphics_context_set_stroke_width(ctx, 2  );
     graphics_context_set_stroke_color(ctx, GColorRed);
     graphics_draw_line(ctx, center, second_hand);
-    graphics_context_set_stroke_width(ctx, 2);
+    graphics_context_set_stroke_width(ctx, 3);
     graphics_draw_line(ctx, second_hand_tail, center);
   }
 
