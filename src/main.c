@@ -247,6 +247,7 @@ static void main_window_load() {
 
 static void main_window_unload() {
   layer_destroy(main_clock);
+  layer_destroy(clock_hands);
   gbitmap_destroy(H0);
   gbitmap_destroy(H1);
   gbitmap_destroy(H2);
