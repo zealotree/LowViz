@@ -160,7 +160,7 @@ static void draw_clock_hands(Layer *layer, GContext *ctx) {
   
     // Draw Second
   
-  if (tick_time->tm_hour >= 23 && tick_time->tm_hour <= 5) {
+  if (tick_time->tm_hour >= 23 || tick_time->tm_hour <= 5) {
     // Do not draw seconds from 23:00 to 5:00
   } else {
     int second_angle = TRIG_MAX_ANGLE * tick_time->tm_sec / 60;
