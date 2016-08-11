@@ -259,6 +259,7 @@ static void main_window_unload() {
   gbitmap_destroy(H9);
   gbitmap_destroy(H10);
   gbitmap_destroy(H11);
+  gpath_destroy(hour_arrow);
 }
 
 static void app_connection_handler(bool connected) {
