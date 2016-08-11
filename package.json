@@ -2,12 +2,12 @@
     "author": "zealotree",
     "dependencies": {},
     "keywords": [],
-    "name": "lowviz",
+    "name": "lowviz dark",
     "pebble": {
         "capabilities": [
             ""
         ],
-        "displayName": "LowViz",
+        "displayName": "LowViz Dark",
         "enableMultiJS": false,
         "messageKeys": [],
         "projectType": "native",
@@ -91,7 +91,7 @@
         "targetPlatforms": [
             "chalk"
         ],
-        "uuid": "3079fc83-88b2-496b-b682-8c01af9b0069",
+        "uuid": "bfbb7d5b-8a57-4928-8ac0-aa9a5c191a26",
         "watchapp": {
             "watchface": true
         }

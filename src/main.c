@@ -89,7 +89,7 @@ static void draw_main_clock(Layer *layer, GContext *ctx) {
 GRect inner_minute_frame = grect_inset(bounds, GEdgeInsets((4 * 1) + 2));
   
 	// Minute Marks
-	graphics_context_set_stroke_color(ctx, GColorBlack);
+	graphics_context_set_stroke_color(ctx, GColorWhite);
 	graphics_context_set_stroke_width(ctx, 1);
 	for(int i = 0; i < 60; i++) {
 		if (i % 5) {
@@ -105,16 +105,16 @@ GRect inner_minute_frame = grect_inset(bounds, GEdgeInsets((4 * 1) + 2));
   // Draw Hour Markers
   for(int i = 0; i < 13; i++) {
     graphics_context_set_compositing_mode(ctx, GCompOpSet);
-    graphics_context_set_fill_color(ctx, GColorBlack);
+    graphics_context_set_fill_color(ctx, GColorWhite);
     GRect digits = grect_centered_from_polar(time_ring, GOvalScaleModeFitCircle, 
                                              DEG_TO_TRIGANGLE(get_angle_for_hour(i)), GSize(33,33));
     graphics_draw_bitmap_in_rect(ctx, getBitmapFromHour(i), digits);
     
-        graphics_context_set_fill_color(ctx, GColorBlack);
+        graphics_context_set_fill_color(ctx, GColorWhite);
     GPoint tick = gpoint_from_polar(dot_ring, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(get_angle_for_hour(i)));
     graphics_fill_circle(ctx, tick, 2);
     
-    graphics_context_set_stroke_color(ctx, GColorBlack);
+    graphics_context_set_stroke_color(ctx, GColorWhite);
     graphics_context_set_stroke_width(ctx, 1);
     int hour_angle = get_angle_for_hour(i);
     GPoint p0 = gpoint_from_polar(frame, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(hour_angle));
@@ -150,11 +150,11 @@ static void draw_clock_hands(Layer *layer, GContext *ctx) {
   };
   
   graphics_context_set_stroke_width(ctx, 4);
-  graphics_context_set_stroke_color(ctx, GColorBlack);
+  graphics_context_set_stroke_color(ctx, GColorWhite);
   graphics_draw_line(ctx, center, minute_hand);
 
   
-	graphics_context_set_fill_color(ctx, GColorBlack);
+	graphics_context_set_fill_color(ctx, GColorWhite);
 	gpath_rotate_to(hour_arrow, (TRIG_MAX_ANGLE * (((tick_time->tm_hour % 12) * 6) + (tick_time->tm_min / 10))) / (12 * 6));
   gpath_draw_filled(ctx, hour_arrow);
   
@@ -196,7 +196,7 @@ static void draw_clock_hands(Layer *layer, GContext *ctx) {
   strftime(date_buffer, sizeof(date_buffer), "%d", tick_time);  
     GRect date = grect_centered_from_polar(date_ring, GOvalScaleModeFitCircle, 
                                              DEG_TO_TRIGANGLE(get_angle_for_hour(6)), GSize(25,25));
-  graphics_context_set_text_color(ctx, GColorBlack);
+  graphics_context_set_text_color(ctx, GColorWhite);
   graphics_draw_text(ctx, date_buffer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD), date,
                 GTextOverflowModeWordWrap, GTextAlignmentCenter, s_attributes);
   
@@ -210,7 +210,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits changed) {
 }
 
 static void main_window_load() {
-  window_set_background_color(my_window, GColorWhite);
+  window_set_background_color(my_window, GColorBlack);
   
 
 
@@ -248,6 +248,17 @@ static void main_window_load() {
 static void main_window_unload() {
   layer_destroy(main_clock);
   gbitmap_destroy(H0);
+  gbitmap_destroy(H1);
+  gbitmap_destroy(H2);
+  gbitmap_destroy(H3);
+  gbitmap_destroy(H4);
+  gbitmap_destroy(H5);
+  gbitmap_destroy(H6);
+  gbitmap_destroy(H7);
+  gbitmap_destroy(H8);
+  gbitmap_destroy(H9);
+  gbitmap_destroy(H10);
+  gbitmap_destroy(H11);
 }
 
 static void app_connection_handler(bool connected) {
